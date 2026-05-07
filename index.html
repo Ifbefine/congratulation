@@ -36,8 +36,8 @@
         <h2>Выбери прикольчик:</h2>
         <div class="menu-buttons">
             <button onclick="showTime()">Сколько мы вместе</button>
-            <button onclick="showPhotos()">Наши фото</button>
             <button onclick="showCapybaras()">Капибарки</button>
+            <button onclick="showGame()">Поймай Капибару! 🦫☕</button>
         </div>
     </div>
     <!-- Экран с капибарами -->
@@ -66,6 +66,23 @@
     <div> 
         <h3></h3>
     </div>
+
+
+    <div id="game-screen" class="full-screen hidden">
+    <h2>Поймай капибару ! 🦫</h2>
+    <p class="game-info">Счёт: <span id="game-score">0</span> / 10</p>
+
+    <div class="game-field">
+        <img id="game-capy" src="jpg/capy-coffee.png" alt="Capybara" style="display: none;">
+    </div>
+
+    <div id="game-win-message" style="display: none;">
+        <h3>Ты поймала их всех! 🎉</h3>
+        <p>Но я всё равно остаюсь самым пойманным твоей любовью ❤️</p>
+    </div>
+
+    <button onclick="backFromGame()" style="margin-top: 30px;">Назад в меню</button>
+</div>
     <script src="js/javascript.js"></script>
 </body>
 </html>

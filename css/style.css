@@ -209,3 +209,45 @@ button:hover {
     background-position: center;
     background-repeat: no-repeat;
 }
+
+#game-screen {
+    background: linear-gradient(135deg, #a8e063 0%, #56ab2f 100%);
+    color: white;
+}
+
+.game-info {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.game-field {
+    width: 90vw;
+    height: 70vh;
+    border: 5px solid white;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.2);
+    position: relative; /* Чтобы капибара позиционировалась внутри поля */
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+#game-capy {
+    width: 80px; /* Размер капибары */
+    height: auto;
+    position: absolute;
+    cursor: pointer;
+    transition: transform 0.2s; /* Эффект нажатия */
+}
+
+#game-capy:active {
+    transform: scale(0.8); /* Сжимается при клике */
+}
+
+#game-win-message {
+    background: rgba(0, 0, 0, 0.7);
+    padding: 20px;
+    border-radius: 15px;
+    text-align: center;
+    border: 2px solid #ff4d6d;
+    box-shadow: 0 0 20px rgba(255, 77, 109, 0.5);
+}

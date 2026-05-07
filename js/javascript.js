@@ -135,7 +135,86 @@ function backToMenu() {
     document.getElementById('time-container').classList.add('hidden');
     document.getElementById('menu-screen').classList.remove('hidden');
 }
+// --- ЛОГИКА ИГРЫ ---
+let score = 0;
+let gameInterval; // Хранит таймер, чтобы можно было его остановить
+let isGameRunning = false;
 
-function showPhotos() {
-    alert("Раздел с нашими фото в разработке! Почти готово ❤️");
+function showGame() {
+    document.getElementById('menu-screen').classList.add('hidden');
+    document.getElementById('game-screen').classList.remove('hidden');
+    resetGame();
+    startGame();
+}
+
+function resetGame() {
+    score = 0;
+    document.getElementById('game-score').innerText = score;
+    document.getElementById('game-win-message').style.display = 'none';
+    document.getElementById('game-capy').style.display = 'none';
+    isGameRunning = false;
+    clearInterval(gameInterval); // На всякий случай чистим старый таймер
+}
+
+function startGame() {
+    if (isGameRunning) return;
+    isGameRunning = true;
+    score = 0;
+    document.getElementById('game-score').innerText = score;
+    
+    // Каждые 1.2 секунды капибара прыгает (можно ускорить)
+    gameInterval = setInterval(moveCapy, 1200);
+    moveCapy(); // Первый прыжок сразу
+}
+
+function moveCapy() {
+    const capy = document.getElementById('game-capy');
+    const field = document.querySelector('.game-field');
+    
+    if (score >= 10) {
+        endGame();
+        return;
+    }
+    
+    // Показываем капибару
+    capy.style.display = 'block';
+
+    // Вычисляем случайные координаты внутри поля
+    // field.clientWidth/Height - размер поля, 80 - размер капибары
+    const x = Math.random() * (field.clientWidth - 80);
+    const y = Math.random() * (field.clientHeight - 80);
+
+    capy.style.left = x + 'px';
+    capy.style.top = y + 'px';
+}
+
+// Привяжем событие клика по капибаре
+document.getElementById('game-capy').addEventListener('click', function() {
+    if (!isGameRunning || score >= 10) return;
+
+    score++;
+    document.getElementById('game-score').innerText = score;
+    this.style.display = 'none'; // Капибара "исчезает" при попадании
+
+    if (score === 10) {
+        endGame();
+    } else {
+        // Чтобы она не появилась сразу же в том же месте, сбросим таймер
+        clearInterval(gameInterval);
+        gameInterval = setInterval(moveCapy, 1000); // Ускоряем прыжки!
+        moveCapy();
+    }
+});
+
+function endGame() {
+    isGameRunning = false;
+    clearInterval(gameInterval);
+    document.getElementById('game-capy').style.display = 'none';
+    document.getElementById('game-win-message').style.display = 'block';
+}
+
+function backFromGame() {
+    resetGame();
+    document.getElementById('game-screen').classList.add('hidden');
+    document.getElementById('menu-screen').classList.remove('hidden');
 }
