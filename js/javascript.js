@@ -28,12 +28,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // --- ЛОГИКА КАПИБАР ---
 const capyPhotos = [
-    '/jpgKapibara/kapibara1.jpg',
-    '/jpgKapibara/kapibara2.jpg',
-    '/jpgKapibara/kapibara3.jpg',
-    '/jpgKapibara/kapibara4.jpg',
-    '/jpgKapibara/kapibara5.jpg',
-    '/jpgKapibara/kapibara6.jpg'
+    'jpgKapibara/kapibara1.jpg',
+    'jpgKapibara/kapibara2.jpg',
+    'jpgKapibara/kapibara3.jpg',
+    'jpgKapibara/kapibara4.jpg',
+    'jpgKapibara/kapibara5.jpg',
+    'jpgKapibara/kapibara6.jpg'
 ];
 let currentCapyIndex = 0;
 

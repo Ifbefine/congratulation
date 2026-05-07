@@ -22,7 +22,7 @@ body, html {
 
 /* Фон первого экрана */
 #start-screen {
-    background-image: url('/jpg/klanmalyshi.jpg'); /* Сюда свою милую картинку */
+    background-image: url('jpg/klanmalyshi.jpg'); /* Сюда свою милую картинку */
 }
 
 /* Скрытие элементов */
@@ -70,7 +70,7 @@ button:hover {
     background: rgba(0, 0, 0, 0.8); /* Темный фон, чтобы цифры "горели" */
     color: #ff4d6d; /* Нежно-розовый или красный цвет */
     text-align: center;
-    background-image: url(/jpg/iFU7lY.gif);
+    background-image: url(jpg/iFU7lY.gif);
     background-repeat: no-repeat;
     background-size: contain;
     background-position: right ;
