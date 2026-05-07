@@ -36,7 +36,16 @@ document.addEventListener('DOMContentLoaded', () => {
     openBtn.addEventListener('click', () => {
         startScreen.classList.add('hidden');
         videoScreen.classList.remove('hidden');
-        video.play().catch(error => console.log("Видео заблокировано"));
+        
+        // Магия для мобилок: "заводим двигатель" музыки заранее
+        // Мы запускаем её и тут же ставим на паузу. 
+        // Браузер запомнит, что юзер разрешил этот звук.
+        music.play().then(() => {
+            music.pause();
+            music.currentTime = 0;
+        }).catch(e => console.log("Silent play blocked"));
+
+        video.play().catch(error => console.log("Video blocked"));
     });
 
     // Изменяем здесь: вызываем activateMenu
