@@ -199,3 +199,13 @@ button:hover {
     cursor: pointer;
     border-radius: 10px;
 }
+/* Класс, который JS добавит к меню, когда видео закончится */
+.menu-with-photo {
+    /* Меняем градиент на фото. Обязательно ../ чтобы выйти из папки css */
+    background-image: url('../jpg/kaiAngel.jpg') !important; 
+    
+    /* Эти настройки растянут фото на весь экран аккуратно */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}

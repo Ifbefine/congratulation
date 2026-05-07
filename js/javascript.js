@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Объявляем все переменные
     const startScreen = document.getElementById('start-screen');
     const videoScreen = document.getElementById('video-screen');
     const menuScreen = document.getElementById('menu-screen');
@@ -8,38 +7,42 @@ document.addEventListener('DOMContentLoaded', () => {
     const skipBtn = document.getElementById('skip-video');
     const music = document.getElementById('bg-music');
 
-    // Настройка громкости
     if (music) music.volume = 0.5;
 
-    // Функция для запуска музыки
     function startMusic() {
         if (music) {
-            music.play().catch(error => console.log("Музыка заблокирована браузером"));
+            music.play().catch(error => console.log("Музыка заблокирована"));
         }
     }
 
-    // 2. Клик по кнопке "Открыть"
+    // Твоя умная функция: делает всё сразу
+    function activateMenu() {
+        videoScreen.classList.add('hidden');
+        menuScreen.classList.remove('hidden');
+        
+        // Добавляем класс с твоим фото для фона меню
+        menuScreen.classList.add('menu-with-photo'); 
+        
+        startMusic();
+    }
+
     openBtn.addEventListener('click', () => {
         startScreen.classList.add('hidden');
         videoScreen.classList.remove('hidden');
         video.play().catch(error => console.log("Видео заблокировано"));
     });
 
-    // 3. Если нажали "Пропустить"
+    // Изменяем здесь: вызываем activateMenu
     if (skipBtn) {
         skipBtn.addEventListener('click', () => {
-            videoScreen.classList.add('hidden');
-            menuScreen.classList.remove('hidden');
-            video.pause();
-            startMusic(); // Включаем музыку здесь
+            video.pause(); // Сначала стопаем видео
+            activateMenu(); // А тут всё остальное (музыка + фото)
         });
     }
 
-    // 4. Если видео закончилось само
+    // И здесь: вызываем activateMenu
     video.onended = () => {
-        videoScreen.classList.add('hidden');
-        menuScreen.classList.remove('hidden');
-        startMusic(); // Включаем музыку здесь
+        activateMenu();
     };
 });
 
@@ -50,7 +53,13 @@ const capyPhotos = [
     'jpgKapibara/kapibara3.jpg',
     'jpgKapibara/kapibara4.jpg',
     'jpgKapibara/kapibara5.jpg',
-    'jpgKapibara/kapibara6.jpg'
+    'jpgKapibara/kapibara6.jpg',
+    'jpgKapibara/kapibara7.jpg',
+    'jpgKapibara/kapibara8.jpg',
+    'jpgKapibara/kapibara9.jpg',
+    'jpgKapibara/kapibara10.jpg',
+    'jpgKapibara/kapibara11.jpg',
+    'jpgKapibara/kapibara12.jpg'
 ];
 let currentCapyIndex = 0;
 
