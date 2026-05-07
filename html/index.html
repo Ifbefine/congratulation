@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Открыточка для Сонечки</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div id="start-screen" class="full-screen">
+        <div class="overlay"></div>
+        <button id="open-btn">Открыть сюрприз</button>
+    </div>
+
+    <div id="video-screen" class="full-screen hidden">
+    <div class="video-container">
+        <!-- Левая фотка -->
+        <img src="/jpg/kotyataDR.jpg" class="side-photo left" alt="Kotyata 1">
+        
+        <!-- Центр: Видео -->
+        <video id="birthday-video" playsinline>
+            <source src="/jpg/pozdravlenie.mp4" type="video/mp4">
+        </video>
+
+        <!-- Правая фотка -->
+        <img src="/jpg/kotyayaDr2.png" class="side-photo right" alt="Kotyata 2">
+    </div>
+<button id="skip-video" class="skip-style">Пропустить поздравление</button>
+</div>
+
+    <div id="menu-screen" class="full-screen hidden">
+        <h2>Выбери прикольчик:</h2>
+        <div class="menu-buttons">
+            <button onclick="showTime()">Сколько мы вместе</button>
+            <button onclick="showPhotos()">Наши фото</button>
+            <button onclick="showCapybaras()">Капибарки</button>
+        </div>
+    </div>
+    <!-- Экран с капибарами -->
+<div id="capybara-screen" class="full-screen hidden">
+    <h2>прикольные картинки с капибарками блин 🦫</h2>
+    <div class="capy-gallery">
+        <img id="capy-img" src="" alt="Capybara">
+    </div>
+    <div class="gallery-controls">
+        <button onclick="prevCapy()">⬅️</button>
+        <button onclick="nextCapy()">➡️</button>
+    </div>
+    <button onclick="backFromCapy()" style="margin-top: 30px;">Назад в меню</button>
+</div>
+    <div id="time-container" class="full-screen hidden">
+        <div class="time-block">
+            <h3>Мы вместе уже:</h3>
+            <p id="relationship-timer"></p>
+        </div>
+        <div class="time-block">
+            <h3>А общаемся:</h3>
+            <p id="chat-timer"></p>
+        </div>
+        <button onclick="backToMenu()">Назад</button>
+    </div>
+    <div> 
+        <h3></h3>
+    </div>
+    <script src="/js/javascript.js"></script>
+</body>
+</html>
