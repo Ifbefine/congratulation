@@ -199,13 +199,25 @@ button:hover {
     cursor: pointer;
     border-radius: 10px;
 }
-/* Класс, который JS добавит к меню, когда видео закончится */
+/* Этот класс добавит фото на фон меню через JS */
 .menu-with-photo {
-    /* Меняем градиент на фото. Обязательно ../ чтобы выйти из папки css */
-    background-image: url('../jpg/kaiAngel.jpg') !important; 
-    
-    /* Эти настройки растянут фото на весь экран аккуратно */
+    /* Обязательно ../ если картинка в папке jpg, а CSS в папке css */
+    background-image: url('../jpg/our-bg.jpg') !important; 
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    position: relative;
+}
+
+/* Опционально: добавим небольшое затемнение поверх фото, 
+   чтобы кнопки и текст "Выбери прикольчик" лучше читались */
+.menu-with-photo::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3); /* Затемнение на 30% */
+    z-index: -1; /* Чтобы слой был под кнопками */
 }
