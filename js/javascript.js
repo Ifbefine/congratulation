@@ -1,32 +1,49 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // 1. Объявляем все переменные
     const startScreen = document.getElementById('start-screen');
     const videoScreen = document.getElementById('video-screen');
     const menuScreen = document.getElementById('menu-screen');
     const openBtn = document.getElementById('open-btn');
     const video = document.getElementById('birthday-video');
     const skipBtn = document.getElementById('skip-video');
+    const music = document.getElementById('bg-music');
 
+    // Настройка громкости
+    if (music) music.volume = 0.5;
+
+    // Функция для запуска музыки
+    function startMusic() {
+        if (music) {
+            music.play().catch(error => console.log("Музыка заблокирована браузером"));
+        }
+    }
+
+    // 2. Клик по кнопке "Открыть"
     openBtn.addEventListener('click', () => {
         startScreen.classList.add('hidden');
         videoScreen.classList.remove('hidden');
-        video.play().catch(error => console.log("Play blocked"));
+        video.play().catch(error => console.log("Видео заблокировано"));
     });
 
+    // 3. Если нажали "Пропустить"
     if (skipBtn) {
         skipBtn.addEventListener('click', () => {
             videoScreen.classList.add('hidden');
             menuScreen.classList.remove('hidden');
             video.pause();
+            startMusic(); // Включаем музыку здесь
         });
     }
 
+    // 4. Если видео закончилось само
     video.onended = () => {
         videoScreen.classList.add('hidden');
         menuScreen.classList.remove('hidden');
+        startMusic(); // Включаем музыку здесь
     };
 });
 
-// --- ЛОГИКА КАПИБАР ---
+// --- ОСТАЛЬНАЯ ЛОГИКА (КАПИБАРЫ И ТАЙМЕР) ОСТАЕТСЯ БЕЗ ИЗМЕНЕНИЙ ---
 const capyPhotos = [
     'jpgKapibara/kapibara1.jpg',
     'jpgKapibara/kapibara2.jpg',
@@ -45,7 +62,6 @@ function showCapybaras() {
 
 function updateCapyPhoto() {
     const img = document.getElementById('capy-img');
-    // Убираем слэш в начале пути, если файлы лежат локально
     img.src = capyPhotos[currentCapyIndex];
 }
 
@@ -64,7 +80,6 @@ function backFromCapy() {
     document.getElementById('menu-screen').classList.remove('hidden');
 }
 
-// --- ЛОГИКА ТАЙМЕРА ---
 const datingStart = new Date(2025, 8, 1, 0, 0); 
 const talkingStart = new Date(2025, 7, 8, 0, 0); 
 
@@ -96,7 +111,6 @@ function backToMenu() {
     document.getElementById('menu-screen').classList.remove('hidden');
 }
 
-// Заглушка для фото (чтобы не было ошибки при клике)
 function showPhotos() {
-    alert("Раздел с вашими фото в разработке! Почти готово ❤️");
+    alert("Раздел с нашими фото в разработке! Почти готово ❤️");
 }
