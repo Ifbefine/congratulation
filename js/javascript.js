@@ -11,7 +11,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function startMusic() {
         if (music) {
-            music.play().catch(error => console.log("Музыка заблокирована"));
+            // Сбросим время песни в начало, на всякий случай
+            music.currentTime = 0; 
+            music.play()
+                .then(() => console.log("Музыка играет!"))
+                .catch(error => {
+                    console.log("Автоплей не сработал. Ждем клика.");
+                    // Если всё же заблокировано, включим по любому клику на странице
+                    document.addEventListener('click', () => music.play(), { once: true });
+                });
         }
     }
 
@@ -19,11 +27,10 @@ document.addEventListener('DOMContentLoaded', () => {
     function activateMenu() {
         videoScreen.classList.add('hidden');
         menuScreen.classList.remove('hidden');
-        
-        // Добавляем класс с твоим фото для фона меню
         menuScreen.classList.add('menu-with-photo'); 
         
-        startMusic();
+        // Добавим микро-задержку в 100мс, чтобы видео успело полностью "закрыться"
+        setTimeout(startMusic, 100);
     }
 
     openBtn.addEventListener('click', () => {
